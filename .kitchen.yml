@@ -1,0 +1,23 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+provisioner:
+  name: chef_zero
+  always_update_cookbooks: true
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: fedora-26
+
+suites:
+  - name: default
+    run_list:
+      - recipe[my-delivery-truck::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
