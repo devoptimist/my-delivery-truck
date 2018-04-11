@@ -34,11 +34,3 @@ chef_gem 'knife-supermarket' do
   action :install
   notifies :write, 'log[notify_user_about_supermarket_gem]'
 end
-
-log 'notify_user_about_supermarket_gem' do
-  message "\nGEM DEPRECATED: The `knife-supermarket` gem has been deprecated " \
-          'and the `knife supermarket` subcommands have been moved in to core ' \
-          'Chef. Please ensure you have ChefDK 0.14 or newer on your build nodes.'
-  level :warn
-  action :nothing
-end
