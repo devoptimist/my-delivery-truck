@@ -12,7 +12,7 @@ property :client, String, required: true
 property :key, String, required: true
 
 
-action :create do
+action :update do
   include ChefAPI::Resource
   ChefAPI.configure do |config|
     config.endpoint = new_resource.endpoint
