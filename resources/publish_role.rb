@@ -16,7 +16,7 @@ action :update do
   require 'chef-api'
   ChefAPI.configure do |config|
     config.endpoint = new_resource.endpoint
-    config.client = new_resources.client
+    config.client = new_resource.client
     config.key = new_resource.key
     config.ssl_verify = false
   end
