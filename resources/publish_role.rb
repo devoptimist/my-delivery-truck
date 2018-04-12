@@ -13,6 +13,7 @@ property :key, String, required: true
 
 
 action :update do
+  require 'chef-api'
   include ChefAPI::Resource
   ChefAPI.configure do |config|
     config.endpoint = new_resource.endpoint
