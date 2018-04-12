@@ -1,5 +1,7 @@
 default_action :update
 
+resource_name :publish_role
+
 property :chefRole, String, name_attribute: true, required: true
 property :endpoint, String, required: true
 property :cookbookName, String, required: true
