@@ -1,6 +1,10 @@
 admin_key = "#{node['delivery']['cookbook']['path']}/admin.pem"
-file admin_key do
-  content node['delivery']['cookbook']['deploy_pass']
+template admin_key do
+  source 'key.erb'
+  cookbook 'my-delivery-truck'
+  variables(
+    key_string: node['delivery']['cookbook']['deploy_pass']
+  )
 end
 
 node['delivery']['cookbook']['organizations'].split(' ').each do |org|
