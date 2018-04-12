@@ -14,7 +14,6 @@ property :key, String, required: true
 
 action :update do
   require 'chef-api'
-  include ChefAPI::Resource
   ChefAPI.configure do |config|
     config.endpoint = new_resource.endpoint
     config.client = new_resources.client
@@ -22,7 +21,7 @@ action :update do
     config.ssl_verify = false
   end
   
-  r = Role.fetch(new_resource.chefRole) || r = Role.new({ name: new_resource.chefRole } )
+  r = ChefAPI::Resource::Role.fetch(new_resource.chefRole) || r = ChefAPI::Resource::Role.new({ name: new_resource.chefRole } )
   r.env_run_lists = {} unless r.env_run_lists
   r.description = new_resource.team_role unless r.description
   if r.description != new_resource.team_role
